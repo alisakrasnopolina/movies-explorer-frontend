@@ -1,0 +1,11 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/inter.css);
+
+:root {
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 1280px;
+  min-width: 320px;
+  color: #000;
+  font-family: 'Inter', Arial, sans-serif;
+}

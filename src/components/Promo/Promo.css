@@ -1,0 +1,43 @@
+.promo {
+  background-color: #F3C1F8;
+  height: 524px;
+  background-image: url('../../images/logo-promo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 275px;
+}
+
+@media screen and (max-width: 1024px) {
+  .promo {
+    height: 784px;
+    padding: 0 19px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .promo {
+    height: 570px;
+    background-size: 248px;
+    padding: 0 10px;
+  }
+}
+
+.promo__text {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+@media screen and (max-width: 568px) {
+  .promo__text {
+  font-size: 31px;
+  line-height: 1.26;
+  }
+}

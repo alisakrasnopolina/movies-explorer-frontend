@@ -1,0 +1,132 @@
+.movies-card {
+  font-family: 'Inter', Arial, sans-serif;
+  height: 218px;
+  width: 270px;
+  border-radius: 10px;
+  background-color: #FDFDFD;
+  box-shadow: 0px 16px 24px 0px #0000000D;
+}
+
+@media screen and (max-width: 1024px) {
+  .movies-card {
+    height: 257px;
+    width: 339px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .movies-card {
+    height: 235px;
+    width: 300px;
+  }
+}
+
+.movies-card__pic {
+  height: 151px;
+  width: 270px;
+  display: block;
+  background-color: #FDFDFD;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: top;
+}
+
+@media screen and (max-width: 1024px) {
+  .movies-card__pic {
+    height: 190px;
+    width: 339px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .movies-card__pic {
+    height: 168px;
+    width: 300px;
+  }
+}
+
+.movies-card__description {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 12px;
+}
+
+.movies-card__name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.23;
+  letter-spacing: 0px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 0 10px;
+}
+
+.movies-card__duration {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #A0A0A0;
+  margin: 0;
+}
+
+.movies-card__delete-button {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: #FDFDFD;
+  background-image: url('../../images/card-cross.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.movies-card__delete-button:hover {
+  opacity: 0.8;
+}
+
+.movies-card__label_type_checkbox {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.movies-card__checkbox {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.movies-card__wrapper-checkbox {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background-color: #FFF;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
+}
+
+.movies-card__circle-checkbox {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background-color: #F9F9F9;
+  transition: background-color .3s ease;
+  margin: 2px;
+}
+
+.movies-card__checkbox:checked + .movies-card__wrapper-checkbox .movies-card__circle-checkbox {
+  background-color: #2BE080;
+}

@@ -1,0 +1,242 @@
+.header {
+  font-family: 'Inter', Arial, sans-serif;
+  padding: 0 70px 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 74px;
+  align-items: center;
+  position: relative;
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    padding: 0 30px 0;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .header {
+    padding: 0 14px 0;
+  }
+}
+
+.header__link-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.header__burger {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .header__burger {
+    display: block;
+    position: relative;
+    width: 28px;
+    height: 23px;
+    cursor: pointer;
+    z-index: 6;
+  }
+
+  .header__burger::before {
+    content: '';
+    background-color: #010101;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    top: 0;
+  }
+
+  .header__burger::after {
+    content: '';
+    background-color: #010101;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    transition: all 0.2s ease 0s;
+  }
+
+  .header__burger_type_close::before {
+    transform: rotate(45deg);  
+    top: 10px;
+
+  }
+
+  .header__burger_type_close::after {
+    transform: rotate(-45deg); 
+    bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .header__burger {
+    width: 22px;
+    height: 21.5px;
+  }
+
+  .header__burger::before {
+    height: 2.5px;
+  }
+
+  .header__burger::after {
+    height: 2.5px;
+    bottom: 1px;
+  }
+
+  .header__burger_type_close::before {
+    transform: rotate(45deg);  
+    top: 10px;
+
+  }
+
+  .header__burger_type_close::after {
+    transform: rotate(-45deg); 
+    bottom: 9px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header__span {
+    position: absolute;
+    background-color: #010101;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    top: 10px;
+    transition: all 0.2s ease 0s;
+  }
+
+  .header__span_type_close {
+    transform: scale(0);
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .header__span {
+    height: 2.5px;
+    top: 9px;
+  }
+}
+
+.header__nav {
+  display: flex;
+}
+
+.header__link-account {
+  height: 28px;
+  width: 96px;
+  border-radius: 50px;
+  border: 2px solid rgb(170, 170, 170, .2);
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: 0px;
+  text-align: left;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.header__link-account:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1024px) {
+  .header__link-account {
+    display: none;
+  }
+
+  .header__link-account_type_opened {
+    display: flex;
+    z-index: 6;
+    position: absolute;
+    top: 902px;
+    right: 210px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .header__link-account_type_opened {
+    top: 702px; 
+    right: 34.375%;
+  }
+}
+
+.header__logo-account {
+  height: 14px;
+  width: 12px;
+  margin-right: 7px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.header__logo-account:hover {
+  opacity: 0.8;
+}
+
+.header__menu {
+  display: flex;
+}
+
+.header__link-registration {
+  color: #000;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0px;
+  text-align: right;
+  margin-right: 30px;
+  align-self: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.header__link-registration:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 568px) {
+  .header__link-registration {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+}
+
+.header__link-login {
+  border-radius: 3px;  
+  background-color: #000;
+  background-size: 76px 32px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #FFF;
+  padding: 8px 20px;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.header__link-login:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 568px) {
+  .header__link-login {
+    font-size: 10px;
+    line-height: 1.6;
+    background-size: 54px 26px;
+    padding: 5px 12px;
+  }
+}
