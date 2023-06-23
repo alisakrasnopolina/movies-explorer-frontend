@@ -80,6 +80,10 @@
   text-align: left;
 }
 
+.register__input:focus::placeholder {
+  color: transparent;
+}
+
 @media screen and (max-width: 568px) {
   .register__input {
     width: 260px;

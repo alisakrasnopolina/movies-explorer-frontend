@@ -9,8 +9,8 @@ function AboutMe() {
       <div className="about-me__biography">
         <div className="about-me__description">
           <h3 className="about-me__name">Майкл Скотт</h3>
-          <p className="about-me__subtitle">Pегиональный менеджер, 58 лет</p>
-          <p className="about-me__paragraph">Я родился и живу в Скрантоне, штат Пенсильвания. Я региональный менеджер филиала компании по поставке офисной бумаги «Дандер Миффлин». Коллеги - моя семья.</p>
+          <p className="about-me__subtitle">Pегиональный менеджер, 58&nbsp;лет</p>
+          <p className="about-me__paragraph">Я родился и живу в Скрантоне, штат Пенсильвания. Я региональный менеджер филиала компании по поставке офисной бумаги «Дандер Миффлин». Коллеги&nbsp;-&nbsp;моя семья.</p>
           <a href="https://github.com/alisakrasnopolina" target="_blank" rel="noreferrer" className="about-me__link">
             Github
           </a>

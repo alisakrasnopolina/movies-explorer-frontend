@@ -5,11 +5,11 @@ import cards from '../../utils/array_movies'
 
 function MoviesCardList(props) {
   return (
-    <section className="movies-card-list">
+    <div className="movies-card-list">
       {cards.map((card, i) => (
           <MoviesCard card={card} key={card._id} />
       ))}
-    </section>
+    </div>
   );
 }
 

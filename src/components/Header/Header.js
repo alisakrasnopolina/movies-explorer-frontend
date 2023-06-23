@@ -12,6 +12,11 @@ function Header(props) {
 
   function handleMenuClick() {
     setNav(!nav)
+    if (!nav) {
+      document.querySelector(':root').style.overflow = "hidden";
+    } else {
+      document.querySelector(':root').style.overflow = "auto";
+    }
   }
 
   return (

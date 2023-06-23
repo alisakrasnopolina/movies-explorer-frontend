@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../Header/Header';
 import './Profile.css';
 // import { Link } from  'react-router-dom'; 
 
@@ -7,7 +6,6 @@ import './Profile.css';
 function Profile(props) {
   return (
     <main className="content">
-      <Header />
       <section className="profile">
         <h2 className="profile__title">Привет, Виталий!</h2>
         <form className="profile__form" >

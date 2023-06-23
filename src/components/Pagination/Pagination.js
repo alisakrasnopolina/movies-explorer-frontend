@@ -3,9 +3,9 @@ import './Pagination.css';
 
 function Pagination(props) {
   return (
-    <section className="pagination">
+    <div className="pagination">
       <button className="pagination__button">Ещё</button>
-    </section>
+    </div>
   );
 }
 

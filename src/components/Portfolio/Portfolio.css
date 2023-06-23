@@ -41,8 +41,6 @@
 }
 
 .portfolio__link-list {
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid #E8E8E8;
   margin-bottom: 20px;
   padding-bottom: 19px;
@@ -61,6 +59,8 @@
 }
 
 .portfolio__link {
+  display: flex;
+  justify-content: space-between;
   text-decoration: none;
   font-size: 30px;
   font-weight: 400;

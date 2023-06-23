@@ -4,7 +4,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 
 function NavTab() {
   return (
-    <section className="nav-tab">
+    <div className="nav-tab">
       <nav>
         <ul className='nav-tab__links-list'>
           <li className='nav-tab__link-list'>
@@ -24,7 +24,7 @@ function NavTab() {
           </li>
         </ul>
       </nav>
-    </section>
+    </div>
   );
 }
 

@@ -4,14 +4,14 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm(props) {
   return (
-    <section className="search-form">
-      <div className="search-form__search">
+    <div className="search-form">
+      <form className="search-form__search">
         <input
           // value={formValue.password}
           // onChange={handleChange}
           id="movie-input" 
           name="movie" 
-          type="movie" 
+          type="text" 
           placeholder="Фильм" 
           className="search-form__input" 
           required 
@@ -19,10 +19,10 @@ function SearchForm(props) {
           // maxLength="200"
         />
         <button className="search-form__button">Найти</button>
-      </div>
+      </form>
       <FilterCheckbox />
       <span className="search-form__line"></span>
-    </section>
+    </div>
   );
 }
 

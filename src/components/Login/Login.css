@@ -91,6 +91,10 @@
   font-weight: 500;
 }
 
+.login__input:focus::placeholder {
+  color: transparent;
+}
+
 .login__submit-button {
   width: 396px;
   height: 45px;

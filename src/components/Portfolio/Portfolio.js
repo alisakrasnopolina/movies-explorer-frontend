@@ -10,20 +10,20 @@ return (
         <li className="portfolio__link-list">
           <a href="https://github.com/alisakrasnopolina" target="_blank" rel="noreferrer" className="portfolio__link">
             Статичный сайт
+            <span className='portfolio__arrow'>↗</span>
           </a>
-          <span className='portfolio__arrow'>↗</span>
         </li>
         <li className="portfolio__link-list">
           <a href="https://github.com/alisakrasnopolina" target="_blank" rel="noreferrer" className="portfolio__link">
             Адаптивный сайт
+            <span className='portfolio__arrow'>↗</span>
           </a>
-          <span className='portfolio__arrow'>↗</span>
         </li>
         <li className="portfolio__link-list">
           <a href="https://github.com/alisakrasnopolina" target="_blank" rel="noreferrer" className="portfolio__link">
             Одностраничное приложение
+            <span className='portfolio__arrow'>↗</span>
           </a>
-          <span className='portfolio__arrow'>↗</span>
         </li>
       </ul>
     </section>

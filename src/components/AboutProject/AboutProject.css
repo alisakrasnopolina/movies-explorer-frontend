@@ -76,7 +76,7 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 568px) {
   .about-project__paragraph:first-child {
     margin: 0 0 56px;
   }
@@ -168,11 +168,18 @@
   align-items: center;
   justify-content: center;
   height: 36px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.21;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 0;
 }
 
 @media screen and (max-width: 568px) {
   .about-project__rectangle {
     height: 35px;
+    font-size: 11px;
   }
 }
 
@@ -184,21 +191,6 @@
 .about-project__rectangle_type_grey {
   background-color: #F2F2F2;
   color: #000;
-}
-
-.about-project__time {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.21;
-  letter-spacing: 0em;
-  text-align: center;
-  margin: 0;
-}
-
-@media screen and (max-width: 568px) {
-  .about-project__time {
-    font-size: 11px;
-  }
 }
 
 .about-project__comment {

@@ -1,3 +1,19 @@
+.filter-checkbox__label {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 0;
+}
+
+@media screen and (max-width: 568px) {
+  .filter-checkbox__label {
+    font-size: 11px;
+    line-height: 1.64;
+  }
+}
+
 .filter-checkbox {
   font-family: 'Inter', Arial, sans-serif;
   display: flex;
@@ -46,20 +62,4 @@
 .filter-checkbox__checkbox:checked + .filter-checkbox__wrapper-checkbox .filter-checkbox__circle-checkbox {
   transform: translateX(18px);
   background-color: #2BE080;
-}
-
-.filter-checkbox__title {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0em;
-  text-align: left;
-  margin: 0;
-}
-
-@media screen and (max-width: 568px) {
-  .filter-checkbox__title {
-    font-size: 11px;
-    line-height: 1.64;
-  }
 }

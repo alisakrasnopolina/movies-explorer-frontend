@@ -44,14 +44,15 @@
 
 .search-form__input:focus {
   font-weight: 500;
+  outline: 1px solid #000;
 }
 
 .search-form__input::placeholder {
   color: #A0A0A0;
 }
 
-.search-form__input:focus {
-  outline: none;
+.search-form__input:focus::placeholder {
+  color: transparent;
 }
 
 @media screen and (max-width: 1024px) {
