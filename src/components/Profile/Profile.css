@@ -1,0 +1,131 @@
+.profile {
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.21;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 74px 0 123px;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__title {
+    margin: 236px 0 96px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .profile__title {
+    margin: 70px 0 80px;
+  }
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__input-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile__input-wrapper {
+  display: flex;
+  width: 410px;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 568px) {
+  .profile__input-wrapper {
+    width: 260px;
+  }
+}
+
+.profile__input-wrapper:first-child {
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 16px;
+}
+
+.profile__input-wrapper:last-child {
+  padding-top: 17px;
+}
+
+.profile__input-name {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0;
+}
+
+.profile__input {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0px;
+  text-align: right;
+  border: none;
+  padding: 0;
+}
+
+.profile__input:focus {
+  outline: none;
+  font-weight: 500;
+}
+
+.profile__button {
+  border: none;
+  background-color: #FFF;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.23;
+  letter-spacing: 0px;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.profile__button:hover {
+  opacity: 0.8;
+}
+
+
+@media screen and (max-width: 568px) {
+  .profile__button {
+    font-size: 12px;
+    line-height: 1.21;
+  }
+}
+
+.profile__button_type_submit {
+  margin: 220px 0 16px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__button_type_submit {
+    margin: 210px 0 16px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .profile__button_type_submit {
+    margin: 379px 0 16px;
+  }
+}
+
+.profile__button_type_logout {
+  color: #FF4062;
+  font-weight: 500;
+}
