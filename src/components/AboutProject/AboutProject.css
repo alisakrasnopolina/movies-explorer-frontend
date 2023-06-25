@@ -60,12 +60,6 @@
   max-width: 550px;
 }
 
-@media screen and (max-width: 1024px) {
-  .about-project__paragraph {
-    max-width: 319px;
-  }
-}
-
 .about-project__paragraph:first-child {
   margin-right: 40px;
 }
