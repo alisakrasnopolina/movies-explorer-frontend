@@ -27,6 +27,10 @@ function App(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    tokenCheck();
+  }, []);
+
+  useEffect(() => {
     if (loggedIn) {
       mainApi.getUser()
         .then((res) => {
@@ -42,8 +46,7 @@ function App(props) {
     }
   }, [loggedIn]);
 
-  
-  const tokenCheck = useCallback(() => {
+  const tokenCheck = () => {
     const token = localStorage.getItem('Authorized');
     if (token) {
       mainApi.getContent(token)
@@ -55,11 +58,7 @@ function App(props) {
         })
         .catch((err) => {console.log(err)})
     }
-  }, []);
-
-  useEffect(() => {
-    tokenCheck();
-  }, []);
+  };
 
   async function handleSearchMovies() {
     setLoading(true);
