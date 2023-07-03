@@ -45,7 +45,6 @@ function App(props) {
   
   const tokenCheck = useCallback(() => {
     const token = localStorage.getItem('Authorized');
-    console.log(token)
     if (token) {
       mainApi.getContent(token)
         .then((res) => {
@@ -151,7 +150,6 @@ function App(props) {
       .then((res) => {
         if (res) {
           handleLogin(email, password)
-          setLoggedIn(true);
           navigate("/movies", {replace: true})
           setApiError('')
         }
