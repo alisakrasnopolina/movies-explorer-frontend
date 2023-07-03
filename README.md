@@ -6,7 +6,7 @@
 
 **Ссылка на Pull Request**
 
-Pull Request 
+Pull Request https://github.com/alisakrasnopolina/movies-explorer-frontend/pull/2
 
 **Ссылки на проект**
 
