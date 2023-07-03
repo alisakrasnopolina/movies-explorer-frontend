@@ -15,12 +15,6 @@ function Profile(props) {
   const { formValues, errors, isValid, handleChange, resetForm } = useFormWithValidation();
 
   useEffect(() => {
-    if (!isEditingBegun) {
-    setSuccessfulMessage('')
-    }
-  }, [isEditingBegun]);
-
-  useEffect(() => {
     currentUser.name !== formValues.name || currentUser.email !== formValues.email
       ? setUserDifference(false)
       : setUserDifference(true);
@@ -85,7 +79,7 @@ function Profile(props) {
               />
             </li>
           </ul>
-          <span className="profile__error" style={props.onUpdate ? {color: 'green'} : {color: '#FF004C'} }>{props.apiError || errors.email || errors.name || successfulMessage}</span>
+          <span className={isEditingBegun ? "profile__error" : "profile__error profile__error_type_hidden"} style={props.onUpdate ? {color: 'green'} : {color: '#FF004C'} }>{props.apiError || errors.email || errors.name || successfulMessage}</span>
           <button type="submit" className={isEditingBegun ? `profile__submit-button ${isValid && !isCurrentUser ? '' : 'profile__submit-button_type_disabled'}` : 'profile__submit-button profile__submit-button_type_hidden'} aria-label="кнопка сохранения информации профиля" disabled={isValid && !isCurrentUser ? false : true}>Сохранить</button>
         </form>
         <div className={isEditingBegun ? 'profile__buttons-wrapper profile__buttons-wrapper_type_hidden' : 'profile__buttons-wrapper'}>

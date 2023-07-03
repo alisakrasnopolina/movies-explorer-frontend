@@ -199,3 +199,7 @@
     margin: 359px 0 20px;
   }
 }
+
+.profile__error_type_hidden {
+  display: none;
+}
