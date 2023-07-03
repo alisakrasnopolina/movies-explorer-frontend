@@ -25,7 +25,7 @@ function App(props) {
   const [isLoading, setLoading] = React.useState(false);
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (loggedIn) {
       mainApi.getUser()
@@ -148,6 +148,7 @@ function App(props) {
     mainApi.register(name, email, password)
       .then((res) => {
         if (res) {
+          handleLogin(email, password)
           setLoggedIn(true);
           navigate("/movies", {replace: true})
           setApiError('')
