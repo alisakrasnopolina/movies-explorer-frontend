@@ -22,6 +22,7 @@ function Profile(props) {
 
   useEffect(() => {
     resetForm(currentUser, false);
+    setSuccessfulMessage('')
   }, [resetForm, currentUser]);
 
   useEffect(() => {
