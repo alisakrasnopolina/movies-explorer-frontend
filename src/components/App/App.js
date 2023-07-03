@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Main from '../Main/Main';
@@ -42,12 +42,10 @@ function App(props) {
     }
   }, [loggedIn]);
 
-  useEffect(() => {
-    tokenCheck();
-  }, []);
-
-  const tokenCheck = () => {
+  
+  const tokenCheck = useCallback(() => {
     const token = localStorage.getItem('Authorized');
+    console.log(token)
     if (token) {
       mainApi.getContent(token)
         .then((res) => {
@@ -58,7 +56,11 @@ function App(props) {
         })
         .catch((err) => {console.log(err)})
     }
-  }
+  }, []);
+
+  useEffect(() => {
+    tokenCheck();
+  }, [loggedIn, tokenCheck]);
 
   async function handleSearchMovies() {
     setLoading(true);
