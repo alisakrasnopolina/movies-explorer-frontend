@@ -15,8 +15,10 @@ function Profile(props) {
   const { formValues, errors, isValid, handleChange, resetForm } = useFormWithValidation();
 
   useEffect(() => {
+    if (!isEditingBegun) {
     setSuccessfulMessage('')
-  }, []);
+    }
+  }, [isEditingBegun]);
 
   useEffect(() => {
     currentUser.name !== formValues.name || currentUser.email !== formValues.email
