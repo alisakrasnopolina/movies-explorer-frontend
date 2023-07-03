@@ -15,6 +15,10 @@ function Profile(props) {
   const { formValues, errors, isValid, handleChange, resetForm } = useFormWithValidation();
 
   useEffect(() => {
+    setSuccessfulMessage('')
+  }, []);
+
+  useEffect(() => {
     currentUser.name !== formValues.name || currentUser.email !== formValues.email
       ? setUserDifference(false)
       : setUserDifference(true);
@@ -22,7 +26,6 @@ function Profile(props) {
 
   useEffect(() => {
     resetForm(currentUser, false);
-    setSuccessfulMessage('')
   }, [resetForm, currentUser]);
 
   useEffect(() => {
