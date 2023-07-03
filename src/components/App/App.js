@@ -59,7 +59,7 @@ function App(props) {
 
   useEffect(() => {
     tokenCheck();
-  }, [loggedIn, tokenCheck]);
+  }, []);
 
   async function handleSearchMovies() {
     setLoading(true);
