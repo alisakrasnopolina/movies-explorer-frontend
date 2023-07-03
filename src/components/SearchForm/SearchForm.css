@@ -91,6 +91,24 @@
   opacity: 0.8;
 }
 
+.search-form__error {
+  color: #FF004C;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.21;
+  letter-spacing: 0em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 568px) {
+  .search-form__error {
+    font-size: 10px;
+  }
+}
+
 .search-form__line {
   display: block;
   border-bottom: 1px solid #E8E8E8;

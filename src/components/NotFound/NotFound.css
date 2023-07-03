@@ -46,6 +46,8 @@
 }
 
 .not-found__link {
+  background-color: #FFF;
+  border: none;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.21;
@@ -58,7 +60,7 @@
 }
 
 .not-found__link:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 568px) {

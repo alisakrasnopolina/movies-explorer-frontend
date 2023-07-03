@@ -1,6 +1,5 @@
 import React from 'react';
 import './Portfolio.css';
-// import { Link } from  'react-router-dom'; 
 
 function Portfolio() {
 return (

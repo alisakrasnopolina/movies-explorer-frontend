@@ -8,6 +8,11 @@
   overflow: hidden;
 }
 
+.movies-card__link {
+  color: #000;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 1024px) {
   .movies-card {
     height: 257px;
@@ -62,6 +67,7 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0 0 10px;
+  width: 210px;
 }
 
 .movies-card__duration {

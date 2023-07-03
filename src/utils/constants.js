@@ -1,0 +1,1 @@
+export const REGEX_NAME = "^[A-Za-zА-Яа-яЁё\\-\\s]+$";
