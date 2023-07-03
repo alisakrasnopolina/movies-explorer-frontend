@@ -35,8 +35,20 @@
 
 .profile__input-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 200px;
   padding: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__input-list {
+    margin-bottom: 190px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .profile__input-list {
+    margin-bottom: 359px;
+  }
 }
 
 .profile__input-wrapper {
@@ -184,19 +196,19 @@
   text-align: center;
   color: #FF004C;
   width: 410px;
-  margin: 200px 0 20px;
+  margin: 0 0 20px;
 }
 
 @media screen and (max-width: 1024px) {
   .profile__error {
-    margin: 190px 0 20px;
+    margin: 0 0 20px;
   }
 }
 
 @media screen and (max-width: 568px) {
   .profile__error {
     width: 260px;
-    margin: 359px 0 20px;
+    margin: 0 0 20px;
   }
 }
 
