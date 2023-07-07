@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import Preloader from '../Preloader/Preloader';
 import Main from '../Main/Main';
 import Layout from '../Layout/Layout';
 import Movies from '../Movies/Movies'
@@ -19,6 +20,7 @@ function App(props) {
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [apiError, setApiError] = React.useState('');
+  const [isPreloaderActive, setPreloaderClass] = React.useState(true);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [successfulUpdate, setSuccessfulUpdate] = React.useState(false);
   const [searchError, setSearchError] = React.useState(false);
@@ -26,9 +28,26 @@ function App(props) {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    tokenCheck();
+  const handleTokenCheck = useCallback(async () => {
+    const token = localStorage.getItem('Authorized');
+    try {
+      if (token) {
+        const userData = await mainApi.getContent(token);
+        if (userData) {
+          setLoggedIn(true);
+          setCurrentUser(userData);
+        }
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setPreloaderClass(false);
+    }
   }, []);
+
+  useEffect(() => {
+    handleTokenCheck();
+  }, [loggedIn, handleTokenCheck]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -45,20 +64,6 @@ function App(props) {
         .catch((err) => {console.log(err)});
     }
   }, [loggedIn]);
-
-  const tokenCheck = () => {
-    const token = localStorage.getItem('Authorized');
-    if (token) {
-      mainApi.getContent(token)
-        .then((res) => {
-          if (res) {
-            setLoggedIn(true);
-            setCurrentUser(res)
-          }
-        })
-        .catch((err) => {console.log(err)})
-    }
-  };
 
   async function handleSearchMovies() {
     setLoading(true);
@@ -137,14 +142,16 @@ function App(props) {
       .catch((err) => {
         setApiError(err)
         setSuccessfulUpdate(false)
+        console.log()
         console.log(err)
       })
       .finally (() => {
         setLoading(false);
-      })
+      });
   }
 
   function handleRegistration(name, email, password) {
+    setLoading(true);
     mainApi.register(name, email, password)
       .then((res) => {
         if (res) {
@@ -157,9 +164,13 @@ function App(props) {
         setApiError(err)
         console.log(err)
       })
+      .finally (() => {
+        setLoading(false);
+      });
   }
 
   function handleLogin(email, password) {
+    setLoading(true);
     mainApi.authorization(email, password)
       .then((data) => {
         setLoggedIn(true);
@@ -170,50 +181,59 @@ function App(props) {
       .catch(err => {
         setApiError(err)
         console.log(err)
+      })
+      .finally (() => {
+        setLoading(false);
       });
   }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <Routes>
-        <Route path="/" element={
-          <Layout loggedIn={loggedIn} />
-        }>
-          <Route index element={<Main />} />
-          <Route path="/movies" element={
-            <ProtectedRoute loggedIn={loggedIn} element={
-              <Movies 
-                savedMovies={savedMovies}
-                searchError={searchError}
-                onSearch={handleSearchMovies}
-                isLoading={isLoading}
-                onMovieSave={handleSaveMovie}
-                onMovieDelete={handleDeleteMovie}
-              />
+    <div className="app__content">
+      {isPreloaderActive ? (
+        <Preloader />
+      ) : (
+      <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route path="/" element={
+            <Layout loggedIn={loggedIn} />
+          }>
+            <Route index element={<Main />} />
+            <Route path="/movies" element={
+              <ProtectedRoute loggedIn={loggedIn} element={
+                <Movies 
+                  savedMovies={savedMovies}
+                  searchError={searchError}
+                  onSearch={handleSearchMovies}
+                  isLoading={isLoading}
+                  onMovieSave={handleSaveMovie}
+                  onMovieDelete={handleDeleteMovie}
+                />
+              }/>
             }/>
-          }/>
-          <Route path="/saved-movies" element={
-            <ProtectedRoute loggedIn={loggedIn} element={
-              <SavedMovies savedMovies={savedMovies} onMovieDelete={handleDeleteMovie}/>
+            <Route path="/saved-movies" element={
+              <ProtectedRoute loggedIn={loggedIn} element={
+                <SavedMovies savedMovies={savedMovies} onMovieDelete={handleDeleteMovie}/>
+              }/>
             }/>
-          }/>
-          <Route path="/profile" element={
-            <ProtectedRoute loggedIn={loggedIn} element={
-              <Profile onLogOut={handleSignOut} onProfile={handleUpdateUser} apiError={apiError} onUpdate={successfulUpdate} onLoading={isLoading}/>
+            <Route path="/profile" element={
+              <ProtectedRoute loggedIn={loggedIn} element={
+                <Profile onLogOut={handleSignOut} onLoading={isLoading} onProfile={handleUpdateUser} apiError={apiError} onUpdate={successfulUpdate}/>
+              }/>
             }/>
+          </Route>
+          <Route path="/sign-up" element={
+            <Register onRegister={handleRegistration} onLoading={isLoading} apiError={apiError} loggedIn={loggedIn}/>
           }/>
-        </Route>
-        <Route path="/sign-up" element={
-          <Register onRegister={handleRegistration} apiError={apiError} loggedIn={loggedIn}/>
-        }/>
-        <Route path="/sign-in" element={
-          <Login onLogin={handleLogin} apiError={apiError} loggedIn={loggedIn}/>
-        }/>
-        <Route path="/*" element={
-          <NotFound />
-        }/>
-      </Routes>
-    </CurrentUserContext.Provider>
+          <Route path="/sign-in" element={
+            <Login onLogin={handleLogin} onLoading={isLoading} apiError={apiError} loggedIn={loggedIn}/>
+          }/>
+          <Route path="/*" element={
+            <NotFound />
+          }/>
+        </Routes>
+      </CurrentUserContext.Provider>
+    )}
+    </div>
   );
 }
 

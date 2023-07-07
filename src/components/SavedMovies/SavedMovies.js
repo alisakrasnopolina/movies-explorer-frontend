@@ -16,42 +16,7 @@ function SavedMovies(props) {
   }, [props.savedMovies])
 
   useEffect(() => {
-    setMoviesNotFound(false);
-    if (
-      localStorage.getItem("savedMoviesSearchName") &&
-      localStorage.getItem("isSavedMoviesFilterOn")
-    ) {
-      const filter = JSON.parse(localStorage.getItem("isSavedMoviesFilterOn"));
-      setFilter(filter);
-      const searchName = localStorage.getItem("savedMoviesSearchName");
-      const found = handleMoviesSearch(props.savedMovies, searchName, true);
-      setFilteredMovies(found);
-      if (!found.length) {
-        setMoviesNotFound(true);
-        setMoviesForList(found);
-      } else {
-        const filtered = handleMoviesFiltering(found, filter, true);
-        setMoviesForList(filtered);
-        if (!filtered.length) {
-          setMoviesNotFound(true);
-        }
-      }
-    } else if (
-      !localStorage.getItem("savedMoviesSearchName") &&
-      localStorage.getItem("isSavedMoviesFilterOn")
-    ) {
-      setFilteredMovies(props.savedMovies);
-      const filter = JSON.parse(localStorage.getItem("isSavedMoviesFilterOn"));
-      setFilter(filter);
-      const filtered = handleMoviesFiltering(props.savedMovies, filter, true);
-      setMoviesForList(filtered);
-      if (!filtered.length) {
-        setMoviesNotFound(true);
-      }
-    } else {
-      setMoviesForList(props.savedMovies);
-      setFilteredMovies(props.savedMovies);
-    }
+    setMoviesForList(props.savedMovies);
   }, []);
 
   function handleMoviesSearch(movies, searchName, isSavedMovies) {

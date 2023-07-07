@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import './Profile.css';
-import useFormWithValidation from '../Validation/Validation';
+import useFormWithValidation from '../../hooks/useFormWithValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { REGEX_NAME } from '../../utils/constants';
 
@@ -31,6 +31,7 @@ function Profile(props) {
   }, [props.onUpdate])
 
   function handleEditClick() {
+    setSuccessfulMessage('')
     setEditingStatus(!isEditingBegun);
   }
 
@@ -59,7 +60,7 @@ function Profile(props) {
                 required 
                 minLength="2" 
                 maxLength="200"
-                disabled={isEditingBegun ? false : true}
+                disabled={isEditingBegun  && !props.onLoading ? false : true}
               />
             </li>
             <li className="profile__input-wrapper">
@@ -75,12 +76,12 @@ function Profile(props) {
                 required
                 minLength="2" 
                 maxLength="40"
-                disabled={isEditingBegun ? false : true}
+                disabled={isEditingBegun && !props.onLoading ? false : true}
               />
             </li>
           </ul>
           <span className={isEditingBegun ? "profile__error" : "profile__error profile__error_type_hidden"} style={props.onUpdate ? {color: 'green'} : {color: '#FF004C'} }>{props.apiError || errors.email || errors.name || successfulMessage}</span>
-          <button type="submit" className={isEditingBegun ? `profile__submit-button ${isValid && !isCurrentUser ? '' : 'profile__submit-button_type_disabled'}` : 'profile__submit-button profile__submit-button_type_hidden'} aria-label="кнопка сохранения информации профиля" disabled={isValid && !isCurrentUser ? false : true}>Сохранить</button>
+          <button type="submit" className={isEditingBegun ? `profile__submit-button ${((!isValid && isCurrentUser) || props.onLoading) ? 'profile__submit-button_type_disabled' : ''}` : 'profile__submit-button profile__submit-button_type_hidden'} aria-label="кнопка сохранения информации профиля" disabled={((!isValid && isCurrentUser) || props.onLoading) ? true : false}>{props.onLoading ? "Сохранение..." : "Сохранить"}</button>
         </form>
         <div className={isEditingBegun ? 'profile__buttons-wrapper profile__buttons-wrapper_type_hidden' : 'profile__buttons-wrapper'}>
           <button type="button" onClick={handleEditClick} className="profile__button profile__button_type_edit" aria-label="кнопка редактирования профиля" >Редактировать</button>

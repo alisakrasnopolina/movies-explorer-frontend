@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, Link  } from "react-router-dom";
 import './Register.css';
 import logo from '../../images/logo.svg';
-import useFormWithValidation from '../Validation/Validation';
+import useFormWithValidation from '../../hooks/useFormWithValidation';
 import { REGEX_NAME } from '../../utils/constants';
 
 function Register(props) {
@@ -33,6 +33,7 @@ function Register(props) {
             type="text" 
             placeholder="Name" 
             pattern={REGEX_NAME}
+            disabled={props.onLoading ? true : false}
             className={(errors.name === '') ? "register__input register__input_data_name" : "register__input register__input_type_error"}
             required 
             minLength="2" 
@@ -47,6 +48,7 @@ function Register(props) {
             name="email" 
             type="email" 
             placeholder="Email" 
+            disabled={props.onLoading ? true : false}
             className={(errors.email === '') ? "register__input register__input_data_email" : "register__input register__input_type_error"} 
             required
             minLength="2" 
@@ -61,6 +63,7 @@ function Register(props) {
             name="password" 
             type="password" 
             placeholder="Пароль" 
+            disabled={props.onLoading ? true : false}
             className={(errors.password === '') ? "register__input register__input_data_password" : "register__input register__input_type_error"}
             required 
             minLength="2" 
@@ -68,7 +71,7 @@ function Register(props) {
           />
           <span className="register__error-message">{errors.password || ''}</span>
           <span className="register__error">{props.apiError}</span>
-          <button type="submit" className={isValid ? "register__submit-button" : "register__submit-button register__submit-button_type_disabled"} disabled={!isValid}>Зарегистрироваться</button>
+          <button type="submit" className={!isValid || props.onLoading ? "register__submit-button register__submit-button_type_disabled" : "register__submit-button"} disabled={!isValid || props.onLoading}>{props.onLoading ? "Регистрация..." : "Зарегистрироваться"}</button>
           <div className="register__subtitles">
             <p className="register__subtitle register__subtitle_type_name">Уже зарегистрированы?</p>
             <Link to="/sign-in" className="register__subtitle register__subtitle_type_link">

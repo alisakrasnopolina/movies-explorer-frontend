@@ -85,16 +85,20 @@ function Movies(props) {
 
   const handleSearchSubmit = useCallback(
     async (searchName) => {
-      setIsSearching(true);
-      setMoviesNotFound(false)
-      if (!initialMovies.length) {
-        const moviesData = await props.onSearch();
-        if (moviesData) {
-          setInitialMovies(moviesData);
-          handleSearchAndFiltering(moviesData, searchName);
-        }
+      if (searchName.toLowerCase().trim() === localStorage.getItem("moviesSearchName")) {
+        setMoviesForList(JSON.parse((localStorage.getItem("foundMovies"))))
       } else {
-        handleSearchAndFiltering(initialMovies, searchName);
+        setIsSearching(true);
+        setMoviesNotFound(false)
+        if (!initialMovies.length) {
+          const moviesData = await props.onSearch();
+          if (moviesData) {
+            setInitialMovies(moviesData);
+            handleSearchAndFiltering(moviesData, searchName);
+          }
+        } else {
+          handleSearchAndFiltering(initialMovies, searchName);
+        }
       }
     },
     [handleSearchAndFiltering, initialMovies, props.onSearch]

@@ -25,6 +25,10 @@ function Header(props) {
       </Link>
       { (props.loggedIn) ? 
       <>
+        <Navigation nav={nav}/>
+        <Link to="/profile" className={nav ? "header__link-account header__link-account_type_opened " : "header__link-account"}>
+          <img src={AccountLogo} alt="Логотип" className="header__logo-account"/>Аккаунт
+        </Link>
         {nav ? 
         <div onClick={handleMenuClick} className="header__burger header__burger_type_close">
           <span className="header__span header__span_type_close"></span>
@@ -34,10 +38,6 @@ function Header(props) {
           <span className="header__span header__span_type_open"></span>
         </div>
         }
-        <Navigation nav={nav}/>
-        <Link to="/profile" className={nav ? "header__link-account header__link-account_type_opened " : "header__link-account"}>
-          <img src={AccountLogo} alt="Логотип" className="header__logo-account"/>Аккаунт
-        </Link>
       </>
       :
       <div className="header__menu"> 

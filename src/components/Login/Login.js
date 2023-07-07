@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Navigate } from "react-router-dom";
 import './Login.css';
 import logo from '../../images/logo.svg';
-import useFormWithValidation from '../Validation/Validation'
+import useFormWithValidation from '../../hooks/useFormWithValidation'
 
 function Login(props) {
   
@@ -32,6 +32,7 @@ function Login(props) {
             name="email" 
             type="email" 
             placeholder="Email" 
+            disabled={props.onLoading ? true : false}
             className={(errors.email === '') ? "login__input login__input_data_email" : "login__input login__input_type_error"}  
             required
             minLength="2" 
@@ -46,6 +47,7 @@ function Login(props) {
             name="password" 
             type="password" 
             placeholder="Пароль" 
+            disabled={props.onLoading ? true : false}
             className={(errors.password === '') ? "login__input login__input_data_password" : "login__input login__input_type_error"}
             required 
             minLength="2" 
@@ -53,7 +55,7 @@ function Login(props) {
           />
           <span className="login__error-message">{errors.password || ''}</span>
           <span className="login__error">{props.apiError}</span>
-          <button type="submit" className={isValid ? "login__submit-button" : "login__submit-button login__submit-button_type_disabled"} disabled={!isValid} aria-label="кнопка входа в аккаунт">Войти</button>
+          <button type="submit" className={!isValid || props.onLoading ? "login__submit-button login__submit-button_type_disabled" : "login__submit-button"} disabled={!isValid || props.onLoading} aria-label="кнопка входа в аккаунт">{props.onLoading ? "Вход..." : "Войти"}</button>
           <div className="login__subtitles">
             <p className="login__subtitle login__subtitle_type_name">Ещё не зарегистрированы?</p>
             <Link to="/sign-up" className="login__subtitle login__subtitle_type_link">

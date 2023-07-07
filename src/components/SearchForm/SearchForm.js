@@ -10,6 +10,12 @@ function SearchForm(props) {
 
   const location = useLocation();
 
+  useEffect(() => {
+    if (location.pathname === "/movies") {
+      setSearchName(localStorage.getItem("moviesSearchName"))
+    }
+  }, [])
+
   const handleChange = (evt) => {
     setSearchName(evt.target.value)
   }

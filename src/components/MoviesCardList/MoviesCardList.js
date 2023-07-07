@@ -4,6 +4,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 import Pagination from '../Pagination/Pagination';
+import { CARDS_PARAMS_RESIZE } from '../../utils/config'
 
 function MoviesCardList(props) {
 
@@ -31,48 +32,34 @@ function MoviesCardList(props) {
     handleResize()
   }, [])
 
-  function handleResize() {
-    if (window.innerWidth >= 1280) {
-      setMoviesCardsParams({
-        current: 16,
-        more: 4,
-      },);
-    } else if (window.innerWidth < 1280 && window.innerWidth >= 1024) {
-      setMoviesCardsParams({
-        current: 12,
-        more: 3,
-      });
-    } else if (window.innerWidth < 1024 && window.innerWidth >= 768) {
-      setMoviesCardsParams({
-        current: 8,
-        more: 2,
-      });
-    } else {
-      setMoviesCardsParams({
-        current: 5,
-        more: 2,
-      });
-    }
-  }
-
-  function handleTiming(func) {
+  useEffect(() => {
     let timer
 
-    return function(event) {
-      if (timer) {
-        clearTimeout(timer)
+    function handleSetTimeout() {
+      if (!timer) {
+        timer = setTimeout(() => {
+          timer = null;
+          handleResize();
+        }, 1000);
       }
-      timer = setTimeout(func, 100, event);
-    };
+    }
+  
+    window.addEventListener("resize", handleSetTimeout);
+  
+    return () => window.removeEventListener("resize", handleSetTimeout);
+  }, [window.innerWidth])
+
+  function handleResize() {
+    if (window.innerWidth >= CARDS_PARAMS_RESIZE.base.width) {
+      setMoviesCardsParams(CARDS_PARAMS_RESIZE.base.cards);
+    } else if (window.innerWidth < CARDS_PARAMS_RESIZE.base.width && window.innerWidth >= CARDS_PARAMS_RESIZE.desktop.width) {
+      setMoviesCardsParams(CARDS_PARAMS_RESIZE.desktop.cards);
+    } else if (window.innerWidth < CARDS_PARAMS_RESIZE.desktop.width && window.innerWidth >= CARDS_PARAMS_RESIZE.tablet.width) {
+      setMoviesCardsParams(CARDS_PARAMS_RESIZE.tablet.cards);
+    } else {
+      setMoviesCardsParams(CARDS_PARAMS_RESIZE.mobile.cards);
+    }
   }
-
-  window.addEventListener("resize", handleTiming(function(e) {
-    handleResize()
-  }));
-
-  window.removeEventListener("resize", handleTiming(function(e) {
-    handleResize()
-  }));
 
   function handleClickOnMoreButton() {
     const start = moviesForList.length;
