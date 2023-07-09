@@ -1,10 +1,10 @@
 import React from 'react';
-import './NavTab.css';
 import { HashLink as Link } from 'react-router-hash-link';
+import './NavTab.css';
 
 function NavTab() {
   return (
-    <div className="nav-tab">
+    <section className="nav-tab">
       <nav>
         <ul className='nav-tab__links-list'>
           <li className='nav-tab__link-list'>
@@ -24,7 +24,7 @@ function NavTab() {
           </li>
         </ul>
       </nav>
-    </div>
+    </section>
   );
 }
 

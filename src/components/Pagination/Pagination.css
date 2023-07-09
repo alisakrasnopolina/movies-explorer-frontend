@@ -35,3 +35,7 @@
 .pagination__button:hover {
   opacity: 0.8;
 }
+
+.pagination__button:focus {
+  outline: none
+}

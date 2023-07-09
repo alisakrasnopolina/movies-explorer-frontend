@@ -35,8 +35,20 @@
 
 .profile__input-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 200px;
   padding: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__input-list {
+    margin-bottom: 190px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .profile__input-list {
+    margin-bottom: 359px;
+  }
 }
 
 .profile__input-wrapper {
@@ -77,11 +89,57 @@
   text-align: right;
   border: none;
   padding: 0;
+  background-color: #FFF;
 }
 
 .profile__input:focus {
   outline: none;
   font-weight: 500;
+}
+
+.profile__submit-button {
+  width: 410px;
+  height: 45px;
+  border: none;
+  border-radius: 3px;
+  background-color: #000;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: 0em;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+@media screen and (max-width: 568px) {
+  .profile__submit-button {
+    width: 260px;
+  }
+}
+
+.profile__submit-button:hover {
+  opacity: 0.8;
+}
+
+.profile__submit-button_type_hidden {
+  display: none;
+}
+
+.profile__submit-button_type_disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+}
+
+.profile__buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__buttons-wrapper_type_hidden {
+  display: none;
 }
 
 .profile__button {
@@ -108,24 +166,52 @@
   }
 }
 
-.profile__button_type_submit {
-  margin: 220px 0 16px;
+.profile__button_type_edit {
+  margin: 0 0 16px;
   font-weight: 400;
 }
 
 @media screen and (max-width: 1024px) {
-  .profile__button_type_submit {
-    margin: 210px 0 16px;
+  .profile__button_type_edit {
+    margin: 0 0 16px;
   }
 }
 
 @media screen and (max-width: 568px) {
-  .profile__button_type_submit {
-    margin: 379px 0 16px;
+  .profile__button_type_edit {
+    margin: 0 0 16px;
   }
 }
 
 .profile__button_type_logout {
   color: #FF4062;
   font-weight: 500;
+}
+
+.profile__error {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #FF004C;
+  width: 410px;
+  margin: 0 0 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__error {
+    margin: 0 0 20px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .profile__error {
+    width: 260px;
+    margin: 0 0 20px;
+  }
+}
+
+.profile__error_type_hidden {
+  display: none;
 }
